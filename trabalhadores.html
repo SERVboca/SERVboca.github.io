@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabalhadores - SERVboca</title>
+  <style>
+    body {
+      background-color: #0d1b2a;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      background: linear-gradient(to right, #66ccff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Ultimate', sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: #1b263b;
+      border-radius: 10px;
+      padding: 15px;
+      width: 280px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .card button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background-color: #66ccff;
+      color: #0d1b2a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .card button:hover {
+      background-color: #ffffff;
+      color: #0d1b2a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Trabalhadores Disponíveis</h1>
+  <div class="container">
+
+    <!-- EXEMPLO 1 -->
+    <div class="card">
+      
+      <p><strong>Nome:</strong> Antnio Pereira de Freitas </p>
+      <p><strong>Idade:</strong> 43</p>
+      <p><strong>Profissão:</strong> Montagem e Reforma de Móveis</p>
+      <button onclick="window.open('https://www.instagram.com/marcenaria_d_freittas?igsh=eG54dDAzZ2h6Ymp6', '_blank')">Pedir Contrato</button>
+    </div>
+
+    <!-- EXEMPLO 2 -->
+    <div class="card">
+
+      <p><strong>Nome:</strong> Alírio Lauriano de Azevedo Neto</p>
+      <p><strong>Idade:</strong> 19</p>
+      <p><strong>Profissão:</strong> Criador de site (básico). Também disponivel para empregos como atendente, repositor e etc.</p>
+      <button onclick="window.open('https://www.instagram.com/servboca', '_blank')">Pedir Contrato</button>
+    </div>
+
+    <!-- Adicione mais aqui -->
+    
+  </div>
+</body>
+</html>
