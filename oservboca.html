@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERV BOCA - Agência de Serviços</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #001f3f, #003366, #3399ff);
+      color: white;
+    }header {
+  background-color: #003366;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8em;
+  color: #00ffff;
+  text-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
+}
+
+.menu-icon {
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+.menu-options {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #003366;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.menu-options a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+@media(min-width: 768px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.text {
+  flex: 1;
+  padding: 10px;
+  line-height: 1.5;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+.text b {
+  color: #ffd700;
+}
+
+.list-left {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+
+.image {
+  flex: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buttons a {
+  background-color: #ffffff;
+  color: #003366;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.buttons a:hover {
+  background-color: #3399ff;
+  color: white;
+  transform: scale(1.05);
+}
+
+#loginModal, #termsModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #002244;
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 2000;
+  color: white;
+  width: 80%;
+  max-width: 400px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#loginModal input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+#loginModal button {
+  padding: 8px 16px;
+  background: #3399ff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SERV BOCA</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-options" id="menu">
+      <a href="#" onclick="openLogin()">Login</a>
+      <a href="https://servboca.github.io/trabalhadores.html" target="_blank">Ver Trabalhadores</a>
+      <a href="#" onclick="openTerms()">Termos e Condições</a>
+    </div>
+  </header>  <div class="container fade-in">
+    <div class="content">
+      <div class="text">
+        <p>Nós somos uma <b>Agência de Serviços</b> localizada em <b>Boca do Acre-AM</b>. Nossa missão é facilitar a conexão entre trabalhadores e clientes de forma prática, segura e eficiente.</p>
+        <p>Aqui no nosso site, você pode <b>ver os trabalhadores disponíveis</b> e também visitar nosso Instagram para mais informações.</p>
+        <p><b>Como fazer um contrato?</b><br />
+        Basta clicar no botão "Ver Trabalhadores", escolher um profissional e nos contatar pelo Instagram. Cuidamos do resto!</p>
+        <p><b>Como virar um trabalhador da agência?</b><br />
+        É fácil! Visite nosso Instagram e nos mande uma mensagem com seus dados:</p>
+        <div class="list-left">
+          - Nome<br />
+          - Idade<br />
+          - Sexo<br />
+          - Profissão ou serviço oferecido<br />
+          - Contato<br />
+          - Dias e horários de disponibilidade
+        </div>
+        <p><b>Como saberei quando recebi um contrato?</b><br />
+        Quando alguém solicitar o serviço e fechar um contrato, nós entraremos em contato com você diretamente.<br />
+        É simples assim: <b>conectamos serviços!</b></p>
+        <div class="buttons">
+          <a href="https://servboca.github.io/trabalhadores.html" target="_blank">Ver Trabalhadores</a>
+          <a href="https://wa.me/5597981027196" target="_blank">Fale Conosco pelo WhatsApp</a>
+          <a href="https://www.instagram.com/servboca?igsh=ZnQzdTlpZnZ0Z2Zu" target="_blank">Fale Conosco pelo Instagram</a>
+        </div>
+      </div>
+      <div class="image">
+        <img src="https://i.postimg.cc/ncfrfs74/essaaaa.png" alt="Imagem da agência">
+      </div>
+    </div>
+  </div>  <div id="loginModal">
+    <span class="close-btn" onclick="closeModals()">✖</span>
+    <h3>Registro</h3>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="registrar()">Registrar</button>
+  </div>  <div id="termsModal">
+    <span class="close-btn" onclick="closeModals()">✖</span>
+    <h3>Termos e Condições</h3>
+    <p>
+      A Agência SERV BOCA - CONECTANDO SERVIÇOS funciona como ponte entre trabalhadores e clientes.
+      O trabalhador se cadastra conosco pelo direct do Instagram ou WhatsApp. Após o cadastro, adicionamos
+      a ficha dele no site e divulgamos seus serviços. Quando encontramos um cliente, fechamos o contrato,
+      fazemos o orçamento, e repassamos 90% da diária ao trabalhador. Os outros 10% ficam conosco como taxa de intermediação.
+    </p>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body style="font-family: sans-serif; margin: 0;">
+
+  <!-- ✅ Menu (exemplo simples com botão de login) -->
+  <div id="menu" style="background: #001f3f; color: white; padding: 10px; display: flex; gap: 15px;">
+    <a href="#" style="color: white;" onclick="openLogin()">Login</a>
+    <a href="#" style="color: white;" onclick="openTerms()">Termos</a>
+  </div>
+
+  <!-- ✅ Modal de Login -->
+  <div id="loginModal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+    background: white; padding: 30px; border-radius: 10px; z-index: 2000; box-shadow: 0 0 10px rgba(0,0,0,0.3); max-width: 300px;">
+    <h3 style="margin-top: 0;">Login / Registro</h3>
+
+    <input type="email" id="email" placeholder="Email" style="width: 100%; margin-bottom: 10px; padding: 8px;" />
+    <input type="password" id="senha" placeholder="Senha" style="width: 100%; margin-bottom: 10px; padding: 8px;" />
+
+    <button onclick="registrar()" style="width: 100%; margin-bottom: 5px;">Registrar</button>
+    <button onclick="loginComEmail()" style="width: 100%; margin-bottom: 10px;">Login com Email</button>
+
+    <hr style="margin: 15px 0;" />
+    <button onclick="loginComGoogle()" style="width: 100%; background: #db4437; color: white;">Login com Google</button>
+
+    <button onclick="closeModals()" style="width: 100%; margin-top: 15px;">Fechar</button>
+  </div>
+
+  <!-- ✅ Modal de Termos (simples) -->
+  <div id="termsModal" style="display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+    background: white; padding: 30px; border-radius: 10px; z-index: 2000; box-shadow: 0 0 10px rgba(0,0,0,0.3); max-width: 400px;">
+    <h3>Termos de Uso</h3>
+    <p>Insira aqui os termos do seu serviço.</p>
+    <button onclick="closeModals()">Fechar</button>
+  </div>
+
+  <!-- ✅ Script principal -->
+  <script>
+    // Configuração do Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyAf6ecTse8eN0Sc0TPjgaQxwDVDmeM44Gk",
+      authDomain: "servboca.firebaseapp.com",
+      projectId: "servboca",
+      storageBucket: "servboca.firebasestorage.app",
+      messagingSenderId: "45154825983",
+      appId: "1:45154825983:web:0bcd1302f865298e36beca"
+    };
+
+    // Inicializando Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const menu = document.getElementById("menu");
+    const loginModal = document.getElementById("loginModal");
+    const termsModal = document.getElementById("termsModal");
+
+    let contaDiv;
+
+    function toggleMenu() {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    function openLogin() {
+      loginModal.style.display = "block";
+      termsModal.style.display = "none";
+    }
+
+    function openTerms() {
+      termsModal.style.display = "block";
+      loginModal.style.display = "none";
+    }
+
+    function closeModals() {
+      loginModal.style.display = "none";
+      termsModal.style.display = "none";
+      if (contaDiv) contaDiv.style.display = "none";
+    }
+
+    function registrar() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      if (!email || !senha) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      firebase.auth().createUserWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Registrado com sucesso!");
+          loginModal.style.display = "none";
+          atualizarMenuParaConta(user.email);
+        })
+        .catch((error) => {
+          alert("Erro ao registrar: " + error.message);
+        });
+    }
+
+    function loginComEmail() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("Login realizado!");
+          loginModal.style.display = "none";
+          atualizarMenuParaConta(user.email);
+        })
+        .catch((error) => {
+          alert("Erro ao fazer login: " + error.message);
+        });
+    }
+
+    function loginComGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          alert("Login com Google feito com sucesso!");
+          loginModal.style.display = "none";
+          atualizarMenuParaConta(user.email);
+        })
+        .catch((error) => {
+          alert("Erro no login com Google: " + error.message);
+        });
+    }
+
+    function atualizarMenuParaConta(email) {
+      const links = menu.getElementsByTagName("a");
+      for (let link of links) {
+        if (link.textContent === "Login") {
+          link.textContent = "Ver Conta";
+          link.onclick = () => mostrarConta(email);
+        }
+      }
+    }
+
+    function mostrarConta(email) {
+      if (!contaDiv) {
+        contaDiv = document.createElement("div");
+        contaDiv.style.position = "fixed";
+        contaDiv.style.top = "70px";
+        contaDiv.style.right = "20px";
+        contaDiv.style.background = "#002244";
+        contaDiv.style.padding = "20px";
+        contaDiv.style.borderRadius = "10px";
+        contaDiv.style.zIndex = "3000";
+        contaDiv.style.color = "white";
+        contaDiv.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+        contaDiv.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <strong>Conta</strong>
+            <span onclick="this.parentElement.parentElement.style.display='none'" style="cursor: pointer;">✖</span>
+          </div>
+          <hr />
+          <p style="margin-top: 10px;">${email}</p>
+          <button onclick="logout()" style="margin-top: 10px;">Sair</button>
+        `;
+        document.body.appendChild(contaDiv);
+      } else {
+        contaDiv.style.display = "block";
+      }
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        alert("Deslogado com sucesso!");
+        location.reload();
+      });
+    }
+
+    window.onload = () => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          atualizarMenuParaConta(user.email);
+        }
+      });
+    };
+  </script>
+</body>
+</html>
