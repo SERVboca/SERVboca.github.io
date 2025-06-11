@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Profissional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      color: cyan;
+      text-align: center;
+      font-family: Woman;
+      padding: 25px;
+      background: linear-gradient(to bottom right, #001f3f, #003366, #3399ff);
+    }
+    input, textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 5px;
+    }
+    #btnEnviar {
+      padding: 10px;
+      width: 100%;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #sucesso {
+      display: none;
+      text-align: center;
+      font-size: 48px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cadastro de Profissional</h2>
+
+  <form action="https://formspree.io/f/xdkzgowp" method="POST">
+    <input type="text" name="nome" placeholder="Nome completo" required>
+    <input type="text" name="endereco" placeholder="Endereço" required>
+    <input type="date" name="nascimento" required>
+    <input type="text" name="profissao" placeholder="Profissão / Serviço" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <input type="tel" name="telefone" placeholder="Telefone" required>
+    <textarea name="extras" placeholder="Informações extras"></textarea>
+
+    <!-- opcional: redirecionar após envio -->
+    <input type="hidden" name="_redirect" value="https://seusite.com/obrigado.html">
+
+    <button type="submit" id="btnEnviar">Enviar Cadastro</button>
+  </form>
+
+  <div id="sucesso">✅️</div>
+
+  <img src="https://i.imgur.com/HQ4fhWz.png" alt="Imagem" style="width:350px; height:auto;">
+</body>
+</html>
