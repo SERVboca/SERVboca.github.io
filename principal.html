@@ -1,129 +1,279 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SERVboca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERV BOCA - Agência de Serviços</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(145deg, #000000, #001f3f, #00c);
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #001f3f, #003366, #3399ff);
       color: white;
-      font-family: Arial, sans-serif;
-      margin: 10;
-      padding: 20px;
-    }
+    }header {
+  background-color: #003366;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 2.8em;
-      background: linear-gradient(to right, #007BFF, #0FFF);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeIn 1.5s ease-in-out forwards;
-    }
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8em;
+  color: #00ffff;
+  text-shadow: 0 0 3px #00ffff, 0 0 6px #00ffff;
+}
 
-    p, ul, img {
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 1s;
-    }
+.menu-icon {
+  font-size: 1.8em;
+  cursor: pointer;
+}
 
-    img {
-      max-width: 100%;
-      height: auto;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
+.menu-options {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #003366;
+  border: 1px solid black;
+  padding: 10px;
+}
 
-    button {
-    background: linear-gradient(to bottom, #00cfff, #00c);
-    color: white;
-    padding: 13px 23px;
-    border: none;
-    border-radius: 11px;
-    box-shadow: 0 5px 0 #0077ff, 0 2px 7px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    font-weight: ultimate;
-    cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.3s ease;
-  }
-  .texto-whatsapp { font-size: 14px; margin-top: 3px; color: white; 
-    font-weight: bold
-  }
-      
+.menu-options a {
+  color: white;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.fade-in {
   opacity: 0;
-  animation: fadeIn 2s ease-in-out forwards;
-  animation-delay: 0.5s;
-    }
+  animation: fadeIn 1.5s ease forwards;
+}
 
-    a {
-      text-decoration: none;
-    }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-    @font-face {
-      font-family: 'Ultimate';
-      src: local('Orbitron'), local('sans-serif');
-    }
+@media(min-width: 768px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.text {
+  flex: 1;
+  padding: 10px;
+  line-height: 1.5;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+.text b {
+  color: #ffd700;
+}
+
+.list-left {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+
+.image {
+  flex: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.buttons a {
+  background-color: #ffffff;
+  color: #003366;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.buttons a:hover {
+  background-color: #3399ff;
+  color: white;
+  transform: scale(1.05);
+}
+
+#loginModal, #termsModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #002244;
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 2000;
+  color: white;
+  width: 80%;
+  max-width: 400px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#loginModal input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+#loginModal button {
+  padding: 8px 16px;
+  background: #3399ff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
-  <h1>SERVboca</h1>
+  <header>
+    <div class="logo">SERV BOCA</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-options" id="menu">
+      <a href="#" onclick="openLogin()">Login</a>
+      <a href="https://servboca.github.io/trabalhadores.html" target="_blank">Ver Trabalhadores</a>
+      <a href="#" onclick="openTerms()">Termos e Condições</a>
+    </div>
+  </header>  <div class="container fade-in">
+    <div class="content">
+      <div class="text">
+        <p>Nós somos uma <b>Agência de Serviços</b> localizada em <b>Boca do Acre-AM</b>. Nossa missão é facilitar a conexão entre trabalhadores e clientes de forma prática, segura e eficiente.</p>
+        <p>Aqui no nosso site, você pode <b>ver os trabalhadores disponíveis</b> e também visitar nosso Instagram para mais informações.</p>
+        <p><b>Como fazer um contrato?</b><br />
+        Basta clicar no botão "Ver Trabalhadores", escolher um profissional e nos contatar pelo Instagram. Cuidamos do resto!</p>
+        <p><b>Como virar um trabalhador da agência?</b><br />
+        É fácil! Visite nosso Instagram e nos mande uma mensagem com seus dados:</p>
+        <div class="list-left">
+          - Nome<br />
+          - Idade<br />
+          - Sexo<br />
+          - Profissão ou serviço oferecido<br />
+          - Contato<br />
+          - Dias e horários de disponibilidade
+        </div>
+        <p><b>Como saberei quando recebi um contrato?</b><br />
+        Quando alguém solicitar o serviço e fechar um contrato, nós entraremos em contato com você diretamente.<br />
+        É simples assim: <b>conectamos serviços!</b></p>
+        <div class="buttons">
+          <a href="https://servboca.github.io/trabalhadores.html" target="_blank">Ver Trabalhadores</a>
+          <a href="https://wa.me/5597981027196" target="_blank">Fale Conosco pelo WhatsApp</a>
+          <a href="https://www.instagram.com/servboca?igsh=ZnQzdTlpZnZ0Z2Zu" target="_blank">Fale Conosco pelo Instagram</a>
+        </div>
+      </div>
+      <div class="image">
+        <img src="https://i.postimg.cc/ncfrfs74/essaaaa.png" alt="Imagem da agência">
+      </div>
+    </div>
+  </div>  <div id="loginModal">
+    <span class="close-btn" onclick="closeModals()">✖</span>
+    <h3>Registro</h3>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="registrar()">Registrar</button>
+  </div>  <div id="termsModal">
+    <span class="close-btn" onclick="closeModals()">✖</span>
+    <h3>Termos e Condições</h3>
+    <p>
+      A Agência SERV BOCA - CONECTANDO SERVIÇOS funciona como ponte entre trabalhadores e clientes.
+      O trabalhador se cadastra conosco pelo direct do Instagram ou WhatsApp. Após o cadastro, adicionamos
+      a ficha dele no site e divulgamos seus serviços. Quando encontramos um cliente, fechamos o contrato,
+      fazemos o orçamento, e repassamos 90% da diária ao trabalhador. Os outros 10% ficam conosco como taxa de intermediação.
+    </p>
+  </div>  <script>
+    const menu = document.getElementById("menu");
+    const loginModal = document.getElementById("loginModal");
+    const termsModal = document.getElementById("termsModal");
 
-  <p>
-  Nós somos uma <strong>Agência de Serviços</strong> localizada em <strong>Boca do Acre-AM</strong>. Nossa missão é facilitar a conexão entre trabalhadores e clientes de forma prática, segura e eficiente.
-  <br><br>
-  Aqui no nosso site, você pode <strong>ver os trabalhadores disponíveis</strong> e também visitar nosso Instagram para mais informações.
-  <br><br>
-  <strong>Como fazer um contrato?<br></strong>
-  Basta clicar no botão "Ver Trabalhadores", escolher um profissional e nos contatar pelo Instagram. Cuidamos do resto!
-  <br><br>
-  <strong>Como virar um trabalhador da agência?<br></strong>
-  É fácil! Visite nosso Instagram e nos mande uma mensagem com seus dados:
-</p>
+    function toggleMenu() {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
 
-<ul style="opacity: 0; animation: fadeIn 2s ease-in-out forwards; animation-delay: 1s;">
-  <li>Nome</li>
-  <li>Idade</li>
-  <li>Sexo</li>
-  <li>Profissão ou serviço oferecido</li>
-  <li>Contato</li>
-  <li>Dias e horários de disponibilidade</li>
-</ul>
+    function openLogin() {
+      loginModal.style.display = "block";
+      termsModal.style.display = "none";
+    }
 
-<p>
-  <strong>Como saberei quando recebi um contrato?<br></strong>
-  Quando alguém solicitar o serviço e fechar um contrato, nós entraremos em contato com você diretamente.
-  <br><br>
-  É simples assim: <strong>conectamos serviços!</strong>
+    function openTerms() {
+      termsModal.style.display = "block";
+      loginModal.style.display = "none";
+    }
 
-  <img src="https://i.postimg.cc/ncfrfs74/essaaaa.png" />
+    function closeModals() {
+      loginModal.style.display = "none";
+      termsModal.style.display = "none";
+    }
 
-  <br><br></br></br>
+    function registrar() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      localStorage.setItem("servboca_email", email);
+      localStorage.setItem("servboca_senha", senha);
+      alert("Registrado com sucesso!");
+      loginModal.style.display = "none";
+    }
 
-  <a href="https://servboca.github.io/trabalhadores.html" target="_blank">
-    <button>Ver Trabalhadores</button>
-  </a>
-</br></br>
-  <a href="https://www.instagram.com/servboca?igsh=ZnQzdTlpZnZ0Z2Zu" target="_blank">
-    <button>Visite nosso Instagram</button>
-  </a>
-</br></br>
-  <a href="https://wa.me/5597981027196" target="_blank">
-    <button>WhatsApp</button>
-  </a>
-
-  <br>
- <p class="texto-whatsapp">Fale conosco pelo WhatsApp!</p>
-  </br></br></br></br>
-  </p>
-</body>
+    window.onload = () => {
+      const emailSalvo = localStorage.getItem("servboca_email");
+      const senhaSalva = localStorage.getItem("servboca_senha");
+      if (emailSalvo && senhaSalva) {
+        console.log("Usuário já registrado:", emailSalvo);
+      }
+    };
+  </script></body>
 </html>
